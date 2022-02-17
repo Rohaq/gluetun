@@ -128,6 +128,11 @@ func Test_versions(t *testing.T) {
 			version: allServers.Torguard.Version,
 			digest:  "6eb9028e",
 		},
+		"VPN secure": {
+			model:   models.VpnsecureServer{},
+			version: allServers.Vpnsecure.Version,
+			digest:  "8ea94259",
+		},
 		"VPN Unlimited": {
 			model:   models.VPNUnlimitedServer{},
 			version: allServers.VPNUnlimited.Version,
