@@ -46,6 +46,9 @@ type OpenVPN struct {
 	// It can be set to the empty string to be ignored.
 	// It cannot be nil in the internal state.
 	ClientKey *string
+	// EncryptedPrivateKey is the content of an encrypted
+	// private key for OpenVPN.
+	EncryptedPrivateKey *string
 	// PIAEncPreset is the encryption preset for
 	// Private Internet Access. It can be set to an
 	// empty string for other providers.
@@ -106,6 +109,12 @@ func (o OpenVPN) validate(vpnProvider string) (err error) {
 		return fmt.Errorf("client key: %w", err)
 	}
 
+	err = validateOpenVPNEncryptedPrivateKey(vpnProvider, *o.EncryptedPrivateKey)
+	if err != nil {
+		return fmt.Errorf("encrypted private key: %w", err)
+	}
+
+	// Validate MSSFix
 	const maxMSSFix = 10000
 	if *o.MSSFix > maxMSSFix {
 		return fmt.Errorf("%w: %d is over the maximum value of %d",
@@ -135,12 +144,7 @@ func validateOpenVPNConfigFilepath(isCustom bool,
 		return ErrFilepathMissing
 	}
 
-	err = helpers.FileExists(confFile)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return helpers.FileExists(confFile)
 }
 
 func validateOpenVPNClientCertificate(vpnProvider,
@@ -159,10 +163,7 @@ func validateOpenVPNClientCertificate(vpnProvider,
 	}
 
 	_, err = parse.ExtractCert([]byte(clientCert))
-	if err != nil {
-		return err
-	}
-	return nil
+	return err
 }
 
 func validateOpenVPNClientKey(vpnProvider, clientKey string) (err error) {
@@ -181,10 +182,21 @@ func validateOpenVPNClientKey(vpnProvider, clientKey string) (err error) {
 	}
 
 	_, err = parse.ExtractPrivateKey([]byte(clientKey))
-	if err != nil {
-		return err
+	return err
+}
+
+func validateOpenVPNEncryptedPrivateKey(vpnProvider,
+	encryptedPrivateKey string) (err error) {
+	if vpnProvider == constants.Vpnsecure && encryptedPrivateKey == "" {
+		return ErrOpenVPNEncPrivateKeyMissing
 	}
-	return nil
+
+	if encryptedPrivateKey == "" {
+		return nil
+	}
+
+	_, err = parse.ExtractEncryptedPrivateKey([]byte(encryptedPrivateKey))
+	return err
 }
 
 func (o *OpenVPN) copy() (copied OpenVPN) {
