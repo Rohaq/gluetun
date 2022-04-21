@@ -39,6 +39,7 @@ func (a *AllServers) Count() int {
 		len(a.Privatevpn.Servers) +
 		len(a.Protonvpn.Servers) +
 		len(a.Purevpn.Servers) +
+		len(a.SlickVPN.Servers) +
 		len(a.Surfshark.Servers) +
 		len(a.Torguard.Servers) +
 		len(a.VPNUnlimited.Servers) +
@@ -62,6 +63,7 @@ func (a *AllServers) SetDefaults() {
 	a.Privatevpn.SetDefaults()
 	a.Protonvpn.SetDefaults()
 	a.Purevpn.SetDefaults()
+	a.SlickVPN.SetDefaults()
 	a.Surfshark.SetDefaults()
 	a.Torguard.SetDefaults()
 	a.VPNUnlimited.SetDefaults()

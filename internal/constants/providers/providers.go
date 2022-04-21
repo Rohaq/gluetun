@@ -43,6 +43,7 @@ func All() []string {
 		Privatevpn,
 		Protonvpn,
 		Purevpn,
+		SlickVPN,
 		Surfshark,
 		Torguard,
 		VPNUnlimited,

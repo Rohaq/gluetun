@@ -26,6 +26,7 @@ import (
 	"github.com/qdm12/gluetun/internal/provider/privatevpn"
 	"github.com/qdm12/gluetun/internal/provider/protonvpn"
 	"github.com/qdm12/gluetun/internal/provider/purevpn"
+	"github.com/qdm12/gluetun/internal/provider/slickvpn"
 	"github.com/qdm12/gluetun/internal/provider/surfshark"
 	"github.com/qdm12/gluetun/internal/provider/torguard"
 	"github.com/qdm12/gluetun/internal/provider/utils"
@@ -83,6 +84,8 @@ func New(provider string, allServers models.AllServers, timeNow func() time.Time
 		return protonvpn.New(allServers.Protonvpn.Servers, randSource)
 	case providers.Purevpn:
 		return purevpn.New(allServers.Purevpn.Servers, randSource)
+	case providers.SlickVPN:
+		return slickvpn.New(allServers.SlickVPN.Servers, randSource)
 	case providers.Surfshark:
 		return surfshark.New(allServers.Surfshark.Servers, randSource)
 	case providers.Torguard:

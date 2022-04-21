@@ -44,6 +44,7 @@ func (s *Storage) mergeServers(hardcoded, persisted models.AllServers) models.Al
 		Privatevpn:     s.mergeProviderServers(providers.Privatevpn, hardcoded.Privatevpn, persisted.Privatevpn),
 		Protonvpn:      s.mergeProviderServers(providers.Protonvpn, hardcoded.Protonvpn, persisted.Protonvpn),
 		Purevpn:        s.mergeProviderServers(providers.Purevpn, hardcoded.Purevpn, persisted.Purevpn),
+		SlickVPN:       s.mergeProviderServers(providers.SlickVPN, hardcoded.SlickVPN, persisted.SlickVPN),
 		Surfshark:      s.mergeProviderServers(providers.Surfshark, hardcoded.Surfshark, persisted.Surfshark),
 		Torguard:       s.mergeProviderServers(providers.Torguard, hardcoded.Torguard, persisted.Torguard),
 		VPNUnlimited:   s.mergeProviderServers(providers.VPNUnlimited, hardcoded.VPNUnlimited, persisted.VPNUnlimited),

@@ -20,6 +20,7 @@ import (
 	"github.com/qdm12/gluetun/internal/updater/providers/privatevpn"
 	"github.com/qdm12/gluetun/internal/updater/providers/protonvpn"
 	"github.com/qdm12/gluetun/internal/updater/providers/purevpn"
+	"github.com/qdm12/gluetun/internal/updater/providers/slickvpn"
 	"github.com/qdm12/gluetun/internal/updater/providers/surfshark"
 	"github.com/qdm12/gluetun/internal/updater/providers/torguard"
 	"github.com/qdm12/gluetun/internal/updater/providers/vpnunlimited"
@@ -312,6 +313,28 @@ func (u *updater) updatePurevpn(ctx context.Context) (err error) {
 
 	u.servers.Purevpn.Timestamp = u.timeNow().Unix()
 	u.servers.Purevpn.Servers = servers
+	return nil
+}
+
+func (u *updater) updateSlickVPN(ctx context.Context) (err error) {
+	minServers := getMinServers(len(u.servers.SlickVPN.Servers))
+	servers, warnings, err := slickvpn.GetServers(
+		ctx, u.client, u.presolver, minServers)
+	if *u.options.CLI {
+		for _, warning := range warnings {
+			u.logger.Warn("SlickVPN: " + warning)
+		}
+	}
+	if err != nil {
+		return err
+	}
+
+	if reflect.DeepEqual(u.servers.SlickVPN.Servers, servers) {
+		return nil
+	}
+
+	u.servers.SlickVPN.Timestamp = u.timeNow().Unix()
+	u.servers.SlickVPN.Servers = servers
 	return nil
 }
 

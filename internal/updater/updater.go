@@ -100,6 +100,8 @@ func (u *updater) getUpdateFunction(provider string) (updateFunction updateFunc)
 		return func(ctx context.Context) (err error) { return u.updateProtonvpn(ctx) }
 	case providers.Purevpn:
 		return func(ctx context.Context) (err error) { return u.updatePurevpn(ctx) }
+	case providers.SlickVPN:
+		return func(ctx context.Context) (err error) { return u.updateSlickVPN(ctx) }
 	case providers.Surfshark:
 		return func(ctx context.Context) (err error) { return u.updateSurfshark(ctx) }
 	case providers.Torguard:

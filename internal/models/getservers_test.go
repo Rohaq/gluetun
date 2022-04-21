@@ -82,6 +82,11 @@ func Test_AllServers_GetCopy(t *testing.T) {
 				IPs: []net.IP{{1, 2, 3, 4}},
 			}},
 		},
+		SlickVPN: Servers{
+			Servers: []Server{{
+				IPs: []net.IP{{1, 2, 3, 4}},
+			}},
+		},
 		Surfshark: Servers{
 			Servers: []Server{{
 				IPs: []net.IP{{1, 2, 3, 4}},

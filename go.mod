@@ -17,13 +17,16 @@ require (
 	github.com/qdm12/updated v0.0.0-20210603204757-205acfe6937e
 	github.com/stretchr/testify v1.7.1
 	github.com/vishvananda/netlink v1.1.1-0.20211129163951-9ada19101fc5
-	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c
+	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e
 	golang.zx2c4.com/wireguard v0.0.0-20210805125648-3957e9b9dd19
 	golang.zx2c4.com/wireguard/wgctrl v0.0.0-20210803171230-4253848d036c
 	inet.af/netaddr v0.0.0-20210718074554-06ca8145d722
 )
 
+require github.com/andybalholm/cascadia v1.3.1 // indirect
+
 require (
+	github.com/PuerkitoBio/goquery v1.8.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/google/go-cmp v0.5.5 // indirect
 	github.com/josharian/native v0.0.0-20200817173448-b6b71def0850 // indirect
@@ -39,6 +42,6 @@ require (
 	go4.org/intern v0.0.0-20210108033219-3eb7198706b2 // indirect
 	go4.org/unsafe/assume-no-moving-gc v0.0.0-20201222180813-1025295fd063 // indirect
 	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97 // indirect
-	golang.org/x/net v0.0.0-20210504132125-bbd867fde50d // indirect
+	golang.org/x/net v0.0.0-20220325170049-de3da57026de // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )

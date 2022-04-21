@@ -24,7 +24,7 @@ var (
 func (c *CLI) FormatServers(args []string) error {
 	var format, output string
 	var cyberghost, expressvpn, fastestvpn, hideMyAss, ipvanish, ivpn, mullvad,
-		nordvpn, perfectPrivacy, pia, privado, privatevpn, protonvpn, purevpn, surfshark,
+		nordvpn, perfectPrivacy, pia, privado, privatevpn, protonvpn, purevpn, slickvpn, surfshark,
 		torguard, vpnUnlimited, vyprvpn, wevpn, windscribe bool
 	flagSet := flag.NewFlagSet("markdown", flag.ExitOnError)
 	flagSet.StringVar(&format, "format", "markdown", "Format to use which can be: 'markdown'")
@@ -43,6 +43,7 @@ func (c *CLI) FormatServers(args []string) error {
 	flagSet.BoolVar(&privatevpn, providers.Privatevpn, false, "Format Private VPN servers")
 	flagSet.BoolVar(&protonvpn, providers.Protonvpn, false, "Format Protonvpn servers")
 	flagSet.BoolVar(&purevpn, providers.Purevpn, false, "Format Purevpn servers")
+	flagSet.BoolVar(&slickvpn, providers.SlickVPN, false, "Format SlickVPN servers")
 	flagSet.BoolVar(&surfshark, providers.Surfshark, false, "Format Surfshark servers")
 	flagSet.BoolVar(&torguard, providers.Torguard, false, "Format Torguard servers")
 	flagSet.BoolVar(&vpnUnlimited, providers.VPNUnlimited, false, "Format VPN Unlimited servers")
@@ -94,6 +95,8 @@ func (c *CLI) FormatServers(args []string) error {
 		formatted = currentServers.Protonvpn.ToMarkdown(providers.Protonvpn)
 	case purevpn:
 		formatted = currentServers.Purevpn.ToMarkdown(providers.Purevpn)
+	case slickvpn:
+		formatted = currentServers.SlickVPN.ToMarkdown(providers.SlickVPN)
 	case surfshark:
 		formatted = currentServers.Surfshark.ToMarkdown(providers.Surfshark)
 	case torguard:

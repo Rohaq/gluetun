@@ -155,6 +155,13 @@ func (s *Storage) extractServersFromBytes(b []byte, hardcoded models.AllServers)
 			target:        &servers.Purevpn,
 		},
 		{
+			provider:      providers.SlickVPN,
+			hardcoded:     hardcoded.SlickVPN,
+			serverVersion: versions.SlickVPN,
+			rawMessage:    rawMessages.SlickVPN,
+			target:        &servers.SlickVPN,
+		},
+		{
 			provider:      providers.Surfshark,
 			hardcoded:     hardcoded.Surfshark,
 			serverVersion: versions.Surfshark,
@@ -249,6 +256,7 @@ type allVersions struct {
 	Privatevpn     serverVersion `json:"privatevpn"`
 	Protonvpn      serverVersion `json:"protonvpn"`
 	Purevpn        serverVersion `json:"purevpn"`
+	SlickVPN       serverVersion `json:"slickvpn"`
 	Surfshark      serverVersion `json:"surfshark"`
 	Torguard       serverVersion `json:"torguard"`
 	VPNUnlimited   serverVersion `json:"vpnunlimited"`
@@ -278,6 +286,7 @@ type allJSONRawMessages struct {
 	Privatevpn     json.RawMessage `json:"privatevpn"`
 	Protonvpn      json.RawMessage `json:"protonvpn"`
 	Purevpn        json.RawMessage `json:"purevpn"`
+	SlickVPN       json.RawMessage `json:"slickvpn"`
 	Surfshark      json.RawMessage `json:"surfshark"`
 	Torguard       json.RawMessage `json:"torguard"`
 	VPNUnlimited   json.RawMessage `json:"vpnunlimited"`

@@ -210,6 +210,12 @@ func getLocationFilterChoices(vpnServiceProvider string, ss *ServerSelection,
 		hostnameChoices = validation.ExtractHostnames(servers)
 	case providers.Purevpn:
 		servers := allServers.GetPurevpn()
+        countryChoices = validation.ExtractCountries(servers)
+		regionChoices = validation.ExtractRegions(servers)
+		cityChoices = validation.ExtractCities(servers)
+		hostnameChoices = validation.ExtractHostnames(servers)
+	case providers.SlickVPN:
+		servers := allServers.GetSlickVPN()
 		countryChoices = validation.ExtractCountries(servers)
 		regionChoices = validation.ExtractRegions(servers)
 		cityChoices = validation.ExtractCities(servers)

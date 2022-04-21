@@ -20,6 +20,7 @@ func (a AllServers) GetCopy() (servers AllServers) {
 	servers.Privatevpn.Servers = a.GetPrivatevpn()
 	servers.Protonvpn.Servers = a.GetProtonvpn()
 	servers.Purevpn.Servers = a.GetPurevpn()
+	servers.SlickVPN.Servers = a.GetSlickVPN()
 	servers.Surfshark.Servers = a.GetSurfshark()
 	servers.Torguard.Servers = a.GetTorguard()
 	servers.VPNUnlimited.Servers = a.GetVPNUnlimited()
@@ -82,6 +83,10 @@ func (a *AllServers) GetProtonvpn() (servers []Server) {
 
 func (a *AllServers) GetPurevpn() (servers []Server) {
 	return copyServers(a.Purevpn.Servers)
+}
+
+func (a *AllServers) GetSlickVPN() (servers []SlickVPNServer) {
+    return copyServers(a.SlickVPN.Servers)
 }
 
 func (a *AllServers) GetSurfshark() (servers []Server) {
