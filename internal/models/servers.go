@@ -35,12 +35,7 @@ func (a *AllServers) MarshalJSON() (data []byte, err error) {
 		return nil, fmt.Errorf("cannot write schema version string: %w", err)
 	}
 
-	for _, provider := range providers.All() {
-		servers, ok := a.ProviderToServers[provider]
-		if !ok {
-			panic(fmt.Sprintf("provider %s not found in all servers", provider))
-		}
-
+	for provider, servers := range a.ProviderToServers {
 		providerKey := fmt.Sprintf(`,"%s":`, provider)
 		_, err = buffer.WriteString(providerKey)
 		if err != nil {
